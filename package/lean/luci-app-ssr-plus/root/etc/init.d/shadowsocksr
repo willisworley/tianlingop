@@ -165,7 +165,7 @@ ln_start_bin() {
 
 start_dns() {
 	local ssrplus_dns="$(uci_get_by_type global pdnsd_enable 0)"
-	local dnsstr="$(uci_get_by_type global tunnel_forward 8.8.4.4:53)"
+	local dnsstr="$(uci_get_by_type global tunnel_forward 208.67.222.222:443)"
 	local dnsserver=$(echo "$dnsstr" | awk -F ':' '{print $1}')
 	local dnsport=$(echo "$dnsstr" | awk -F ':' '{print $2}')
 	start_pdnsd() {
@@ -196,8 +196,8 @@ start_dns() {
 			}
 			server{
 			label="ssr-usrdns";
-			ip=$usr_dns;
-			port=$usr_port;
+			ip=208.67.222.222;
+			port=443;
 			timeout=6;
 			uptest=none;
 			interval=10m;
